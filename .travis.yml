@@ -25,4 +25,4 @@ install:
     - platformio lib update 4
 
 script:
-    - platformio ci --lib="./src" --board=uno --board=miniatmega328 --board=pro16MHzatmega328 --board=megaatmega2560 --board=megaatmega1280
+    - platformio ci --lib="." --board=uno --board=miniatmega328 --board=pro16MHzatmega328 --board=megaatmega2560 --board=megaatmega1280
