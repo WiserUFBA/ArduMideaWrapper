@@ -1,0 +1,28 @@
+language: python
+python:
+    - "2.7"
+
+# Cache PlatformIO packages using Travis CI container-based infrastructure
+sudo: false
+cache:
+    directories:
+        - "~/.platformio"
+
+env:
+    # Use this little line of shell script to generate list of files to compile
+    # for x in $(echo $(find WiserDevices -type f) | cat); echo "  - PLATFORMIO_CI_SRC="$x
+    # --- General Examples ---
+    - PLATFORMIO_CI_SRC=examples/basic_commands
+    - PLATFORMIO_CI_SRC=examples/use_explaned
+    # --- Library Tests ---
+    - PLATFORMIO_CI_SRC=tests/unit_tests
+
+install:
+    - pip install -U platformio
+    # Install libraries needed
+    - platformio lib install 4
+    # Update libraries to prevent cache of old versions
+    - platformio lib update 4
+
+script:
+    - platformio ci --lib="./src" --board=uno --board=miniatmega328 --board=pro16MHzatmega328 --board=megaatmega2560 --board=megaatmega1280
