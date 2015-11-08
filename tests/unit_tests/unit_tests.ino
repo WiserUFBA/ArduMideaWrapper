@@ -14,7 +14,7 @@ void setup(){
     Serial.println("Midea IR Unit Tests");
     Serial.println("Developed by: Jeferson Lima");
     Serial.println();
-    Serial.println("Starting Unit Tests...")
+    Serial.println("Starting Unit Tests...");
 
     // Temp Variables
     int i;
