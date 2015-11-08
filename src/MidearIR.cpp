@@ -6,6 +6,7 @@
     *** Developed at WiserUFBA Research Group *** 
                         ***
 */
+#include "MideaIR.h"
 #include <stdint.h>
 #include <IRremote.h>
 
