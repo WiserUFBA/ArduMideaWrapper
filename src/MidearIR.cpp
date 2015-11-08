@@ -133,7 +133,7 @@ void MideaIR::generateCommand(){
 
     // Prepare Mode and Fan Speed are alreay prepared so just copy the values to the temp var
     b_mode      = mode; 
-    b_fan_speed = fan_speed;
+    b_fan_speed = speed_fan;
 
     // Prepare Features
     b_feature = 0xF; // <- Not implemented yet
