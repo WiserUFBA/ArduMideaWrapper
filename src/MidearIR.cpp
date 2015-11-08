@@ -10,6 +10,26 @@
 #include <IRremote.h>
 
 MideaIR::MideaIR(IRsend *ref){
+    /* Initialize the variables with the default values */
+    // Set the temperature on 20 and state in false (off)
+    temperature   = 20;
+    state         = false;
+    
+    // Initialize Speed and Mode in auto
+    mode          = mode_auto;
+    speed_fan     = fan_auto;
+    
+    // Disable Complex Features
+    osci_dir      = false;
+    sleep         = false;
+    turbo         = false;
+    sound         = false;
+
+    // Zero the command bytes
+    command_byte1 = 0;
+    command_byte2 = 0;
+
+    // IR Emiter Reference
     irsend = ref;
 }
 

@@ -12,9 +12,7 @@
 #include <stdint.h>
 #include <IRremote.h>
 
-
-/*  fan_speed   = 1110: off     1011: auto;   1001: 1,      0101: 2,      0011: 3
-    command     = 0000: cool,   1000: auto,   1100: heat,   1101: humidity extraction */
+// Air Conditioner Modes
 enum Modes{
     mode_cool        = 0x0,
     mode_auto        = 0x8,
@@ -22,13 +20,14 @@ enum Modes{
     mode_no_humidity = 0xD
 };
 
+// Air Conditioner Fan Speeds
 enum FanSpeed{
     fan_off     = 0xE,
     fan_auto    = 0xB,
     fan_speed_1 = 0x9,
     fan_speed_2 = 0x5,
     fan_speed_3 = 0x3
-}
+};
 
 // Midea IR Times
 #define MIDEA_MARK_LIMIT    4200
