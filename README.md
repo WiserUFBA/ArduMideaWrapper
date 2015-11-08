@@ -17,9 +17,6 @@ In order to solve this problem, this library provides an object that simulate th
 // Your turn Andressa ;)
 
 
-### Developers in this code
-
-
 --
 <p align="center">
 	Developed by </br>
