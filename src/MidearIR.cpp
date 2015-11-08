@@ -158,11 +158,11 @@ void MideaIR::emitByte(uint8_t byte_to_send){
 
     // Emit the first Byte
     for (i = 0;i < 8;i++) {
-        irsend.mark(MIDEA_MARK);
+        irsend->mark(MIDEA_MARK);
         if (cur & mask)
-            irsend.space(MIDEA_SPACE);
+            irsend->space(MIDEA_SPACE);
         else
-            irsend.space(MIDEA_SPACE2);
+            irsend->space(MIDEA_SPACE2);
         mask >>= 1;
     }
 
@@ -172,19 +172,19 @@ void MideaIR::emitByte(uint8_t byte_to_send){
 
     // And emit the same byte negate
     for (i = 0;i < 8;i++) {
-        irsend.mark(MIDEA_MARK);
+        irsend->mark(MIDEA_MARK);
         if (cur & mask)
-            irsend.space(MIDEA_SPACE);
+            irsend->space(MIDEA_SPACE);
         else
-            irsend.space(MIDEA_SPACE2);
+            irsend->space(MIDEA_SPACE2);
         mask >>= 1;
     }
 }
 
 void MideaIR::loWLevelEmit(){
     // Start Communication
-    irsend.mark(MIDEA_MARK_LIMIT);
-    irsend.space(MIDEA_SPACE_LIMIT);
+    irsend->mark(MIDEA_MARK_LIMIT);
+    irsend->space(MIDEA_SPACE_LIMIT);
     
     // Emit Some bytes
     emitByte(MIDEA_START_BYTE);
@@ -192,8 +192,8 @@ void MideaIR::loWLevelEmit(){
     emitByte(command_byte2);
 
     // End Communication
-    irsend.mark(MIDEA_MARK_LIMIT2);
-    irsend.space(MIDEA_SPACE_LIMIT);
+    irsend->mark(MIDEA_MARK_LIMIT2);
+    irsend->space(MIDEA_SPACE_LIMIT);
 }
 
 // Emit the command
@@ -202,7 +202,7 @@ void MideaIR::emit(){
     generateCommand();
 
     // Set IR Configuration
-    irsend.enableIROut(MIDEA_FREQUENCY);
+    irsend->enableIROut(MIDEA_FREQUENCY);
 
     // Send two times the same command, we have not discovered why this is necessary :?
     loWLevelEmit();
