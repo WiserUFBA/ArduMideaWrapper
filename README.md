@@ -4,7 +4,7 @@
 [![License Badge](https://img.shields.io/github/license/wiserufba/ardumideawrapper.svg)](https://github.com/WiserUFBA/ArduMideaWrapper/blob/master/LICENSE)
 [![Issues Badge](https://img.shields.io/github/issues/wiserufba/ardumideawrapper.svg)](https://github.com/WiserUFBA/ArduMideaWrapper/issues)
 [![Join the chat at https://gitter.im/WiserUFBA/ArduMideaWrapper](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/WiserUFBA/ArduMideaWrapper?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/WiserUFBA/ardumideawrapper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ### Introduction
 
@@ -20,5 +20,6 @@ In order to solve this problem, this library provides an object that simulate th
 --
 <p align="center">
 	Developed by </br>
-  <img src="https://wiki.dcc.ufba.br/pub/SmartUFBA/ProjectLogo/wiserufbalogo.jpg"/>
+  <img alt="Wiser Research Group Logo" src="https://wiki.dcc.ufba.br/pub/SmartUFBA/ProjectLogo/wiserufbalogo.jpg"/> </br> </br>
+  <img alt="We use love to research and develop" width="160" src="https://wiki.dcc.ufba.br/pub/SmartUFBA/LayoutTemplate/featured-built-with-love.svg"/>
 </p>
