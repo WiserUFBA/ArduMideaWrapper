@@ -20,6 +20,5 @@ In order to solve this problem, this library provides an object that simulate th
 --
 <p align="center">
 	Developed by </br>
-  <img alt="Wiser Research Group Logo" src="https://wiki.dcc.ufba.br/pub/SmartUFBA/ProjectLogo/wiserufbalogo.jpg"/> </br>
-  <img alt="We use love to research and develop" width="190" src="https://wiki.dcc.ufba.br/pub/SmartUFBA/LayoutTemplate/featured-built-with-love.svg"/>
+  <img alt="Wiser Research Group Logo" src="https://wiki.dcc.ufba.br/pub/SmartUFBA/ProjectLogo/wiserufbalogo.jpg"/> 
 </p>
