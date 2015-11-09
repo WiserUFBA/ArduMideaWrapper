@@ -14,7 +14,57 @@ In order to solve this problem, this library provides an object that simulate th
 
 ### How to Use?
 
-// Your turn Andressa ;)
+We use two libraries to ArduMideaWrapper project,the traditional IR library and a especific library called MideaIR. Both needs an object be created:
+
+IRsend irsend;<br />
+MideaIR remote_control(&irsend);
+
+
+Then, you can use the functions to control your air conditioner.
+
+The functions turnON and turnOFF don't need parameters and can be used like this:
+
+remote_control.turnON();<br />
+remote_control.turnOFF();
+
+There are functions to set Mode, Temperature and Speed Fan:
+
+The function to set temperature receive as paramenter an int with the required temperature:
+
+remote_control.setTemperature(18);<br />
+remote_control.emit();
+
+The function to set mode receive as paramenter a string with the required mode:
+
+remote_control.setMode(mode_cool);<br />
+remote_control.emit();
+
+There are four modes: mode_cool, mode_heat, mode_no_humidity, mode_auto.
+
+The function to set speed fan receive as paramenter a string with the required speed:
+
+remote_control.setSpeedFan(fan_speed_3);<br />
+remote_control.emit();
+
+
+There are five fan configurations: fan_off, fan_speed_1, fan_speed_2, fan_speed_3, fan_auto.
+
+These functions needs another function to work, the emit function, which will send the signal to air conditioner.
+You can set how many operations you want and then use this function to make all alterations once.Example:
+
+remote_control.setTemperature(25);<br />
+remote_control.setMode(mode_auto);<br />
+remote_control.setSpeedFan(fan_speed_3);<br />
+remote_control.emit();
+
+The library offers also a way to get information from air conditioner:
+
+To get mode: remote_control.getMode()<br />
+To get speed fan: remote_control.getSpeedFan()<br />
+To get temperature:  remote_control.getTemperature()
+
+
+You can download the IR library here: https://github.com/z3t0/Arduino-IRremote
 
 
 --
