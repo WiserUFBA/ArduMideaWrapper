@@ -195,6 +195,7 @@ void setup(){
 
         remote_control.setTemperature(i);
         remote_control.emit();
+        delay(FIVE_SECONDS);
     }
 
     Serial.println("Finishing tests...");
