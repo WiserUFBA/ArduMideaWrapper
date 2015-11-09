@@ -49,7 +49,7 @@ remote_control.emit();
 
 There are five fan configurations: fan_off, fan_speed_1, fan_speed_2, fan_speed_3, fan_auto.
 
-These functions needs another function to work, the emit function, which will send the signal to air conditioner.
+These functions need another function to work, the emit function, which will send the signal to air conditioner.
 You can set how many operations you want and then use this function to make all alterations once.Example:
 
 remote_control.setTemperature(25);<br />
