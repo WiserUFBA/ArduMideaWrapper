@@ -14,58 +14,76 @@ In order to solve this problem, this library provides an object that simulate th
 
 ### How to Use?
 
-We use two libraries to ArduMideaWrapper project,the traditional IR library and a especific library called MideaIR. Both needs an object be created:
+To use this library you need to include the traditional IR library and pass the reference of the object irsend in the constructor of the MideaIR class.
 
-IRsend irsend;<br />
+```cpp
+IRsend irsend;
 MideaIR remote_control(&irsend);
-
+```
 
 Then, you can use the functions to control your air conditioner.
 
-The functions turnON and turnOFF don't need parameters and can be used like this:
+You can use the functions to turnON and turnOFF without the need of call `emit()`.:
 
-remote_control.turnON();<br />
+```cpp
+// To turn the Air Conditioner ON
+remote_control.turnON();
+// and the following to turn the Air Conditioner OFF
 remote_control.turnOFF();
+```
 
+`emit()` Is a function used to emit the IR Signal to the Air Conditioner, if you make a change on the mode or temperature, use `emit()` to send the signal, if you don't use emit() the air conditioner won't be changed.
 There are functions to set Mode, Temperature and Speed Fan:
 
-The function to set temperature receive as paramenter an int with the required temperature:
+The function to set temperature (`setTemperature()`) receive as paramenter an int with the required temperature, the range accepted is between 17 and 30, if you use more than 30, the class will change this to 30 and if you use less then 17 the class will change this to 17:
 
-remote_control.setTemperature(18);<br />
+```cpp
+remote_control.setTemperature(18);
 remote_control.emit();
+```
+The function to set mode (`setMode()`) receive a constant as a parameter, if you don't use a correct constant the class with the required mode will change this to the default that is `mode_auto`:
 
-The function to set mode receive as paramenter a string with the required mode:
-
-remote_control.setMode(mode_cool);<br />
+```cpp
+remote_control.setMode(mode_cool);
 remote_control.emit();
+```
 
-There are four modes: mode_cool, mode_heat, mode_no_humidity, mode_auto.
+There are four modes, represented as the following constants: `mode_cool`, `mode_heat`, `mode_no_humidity`, `mode_auto`.
 
-The function to set speed fan receive as paramenter a string with the required speed:
+The function to set speed fan (`setSpeedFan()`) receive a constant as a paramenter, like the `setMode()` function, if you don't use a correct constant the class will use the default `fan_auto` instead:
 
-remote_control.setSpeedFan(fan_speed_3);<br />
+```cpp
+remote_control.setSpeedFan(fan_speed_3);
 remote_control.emit();
+```
 
+There are five fan configurations, represented as the following constants: `fan_off`, `fan_speed_1`, `fan_speed_2`, `fan_speed_3`, `fan_auto`.
 
-There are five fan configurations: fan_off, fan_speed_1, fan_speed_2, fan_speed_3, fan_auto.
+Like we have said above, set functions just change local variables, if you want to send these to the air conditioner you need to call `emit()`. You can set as many operations as you can, before send the signal, and all of them will be synchronized once.
 
-These functions need another function to work, the emit function, which will send the signal to air conditioner.
-You can set how many operations you want and then use this function to make all alterations once.Example:
+Example:
 
+```cpp
 remote_control.setTemperature(25);<br />
 remote_control.setMode(mode_auto);<br />
 remote_control.setSpeedFan(fan_speed_3);<br />
 remote_control.emit();
+```
 
-The library offers also a way to get information from air conditioner:
+You can use the following function to retrieve information from the class:
 
-To get mode: remote_control.getMode()<br />
-To get speed fan: remote_control.getSpeedFan()<br />
-To get temperature:  remote_control.getTemperature()
+```cpp
+// Get Mode
+remote_control.getMode();
+// Get Speed Fan
+remote_control.getSpeedFan();
+// Get Temperature
+remote_control.getTemperature();
+// Get State ~ ON or OFF ~ true or false
+remote_control.getState();
+```
 
-
-You can download the IR library here: https://github.com/z3t0/Arduino-IRremote
-
+You can download the IR library here: [![Arduino-IRremote](https://github.com/z3t0/Arduino-IRremote)];
 
 --
 <p align="center">
