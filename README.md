@@ -64,9 +64,9 @@ Like we have said above, set functions just change local variables, if you want 
 Example:
 
 ```cpp
-remote_control.setTemperature(25);<br />
-remote_control.setMode(mode_auto);<br />
-remote_control.setSpeedFan(fan_speed_3);<br />
+remote_control.setTemperature(25);
+remote_control.setMode(mode_auto);
+remote_control.setSpeedFan(fan_speed_3);
 remote_control.emit();
 ```
 
