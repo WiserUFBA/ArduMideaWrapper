@@ -83,7 +83,7 @@ remote_control.getTemperature();
 remote_control.getState();
 ```
 
-You can download the IR library here: [![Arduino-IRremote](https://github.com/z3t0/Arduino-IRremote)];
+You can download the IR library here: ![Arduino-IRremote](https://github.com/z3t0/Arduino-IRremote)
 
 --
 <p align="center">
