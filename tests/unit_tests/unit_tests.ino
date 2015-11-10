@@ -11,10 +11,10 @@ MideaIR remote_control(&irsend);
 void setup(){
     // Start communication in 9600
     Serial.begin(9600);
-    Serial.println("Midea IR Unit Tests");
-    Serial.println("Developed by: Jeferson Lima");
+    Serial.println(F("Midea IR Unit Tests"));
+    Serial.println(F("Developed by: Jeferson Lima"));
     Serial.println();
-    Serial.println("Starting Unit Tests...");
+    Serial.println(F("Starting Unit Tests..."));
 
     // Temp Variables
     int i;
@@ -24,12 +24,12 @@ void setup(){
 
     // Do Unit tests
     // Try to turn ON the Air Conditioner
-    Serial.println("Trying to Turn ON the Air Conditioner...");
+    Serial.println(F("Trying to Turn ON the Air Conditioner..."));
     remote_control.turnON();
     delay(FIVE_SECONDS);
 
     // Try to turn OFF
-    Serial.println("Trying to Turn OFF the Air Conditioner...");
+    Serial.println(F("Trying to Turn OFF the Air Conditioner..."));
     remote_control.turnOFF();
     delay(FIVE_SECONDS);
 
@@ -38,12 +38,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getMode() == mode_cool)
-        Serial.println("Mode Cool - change OK");
+        Serial.println(F("Mode Cool - change OK"));
     else
-        Serial.println("Mode Cool - change FAIL");
+        Serial.println(F("Mode Cool - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the mode cool...");
+    Serial.println(F("Trying to set the mode cool..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -52,12 +52,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getMode() == mode_heat)
-        Serial.println("Mode Heat - change OK");
+        Serial.println(F("Mode Heat - change OK"));
     else
-        Serial.println("Mode Heat - change FAIL");
+        Serial.println(F("Mode Heat - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the mode heat...");
+    Serial.println(F("Trying to set the mode heat..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -66,12 +66,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getMode() == mode_no_humidity)
-        Serial.println("Mode Humidity Remover - change OK");
+        Serial.println(F("Mode Humidity Remover - change OK"));
     else
-        Serial.println("Mode Humidity Remover - change FAIL");
+        Serial.println(F("Mode Humidity Remover - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the mode humidity remover...");
+    Serial.println(F("Trying to set the mode humidity remover..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -80,12 +80,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getMode() == mode_auto)
-        Serial.println("Mode Auto - change OK");
+        Serial.println(F("Mode Auto - change OK"));
     else
-        Serial.println("Mode Auto - change FAIL");
+        Serial.println(F("Mode Auto - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the mode auto...");
+    Serial.println(F("Trying to set the mode auto..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -94,12 +94,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getSpeedFan() == fan_off)
-        Serial.println("Fan Off - change OK");
+        Serial.println(F("Fan Off - change OK"));
     else
-        Serial.println("Fan Off - change FAIL");
+        Serial.println(F("Fan Off - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the turn off Fan...");
+    Serial.println(F("Trying to set the turn off Fan..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -108,12 +108,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getSpeedFan() == fan_speed_1)
-        Serial.println("Fan Speed 1 - change OK");
+        Serial.println(F("Fan Speed 1 - change OK"));
     else
-        Serial.println("Fan Speed 1 - change FAIL");
+        Serial.println(F("Fan Speed 1 - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the speed 1...");
+    Serial.println(F("Trying to set the speed 1..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -122,12 +122,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getSpeedFan() == fan_speed_2)
-        Serial.println("Fan Speed 2 - change OK");
+        Serial.println(F("Fan Speed 2 - change OK"));
     else
-        Serial.println("Fan Speed 2 - change FAIL");
+        Serial.println(F("Fan Speed 2 - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the speed 2...");
+    Serial.println(F("Trying to set the speed 2..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -136,12 +136,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getSpeedFan() == fan_speed_3)
-        Serial.println("Fan Speed 3 - change OK");
+        Serial.println(F("Fan Speed 3 - change OK"));
     else
-        Serial.println("Fan Speed 3 - change FAIL");
+        Serial.println(F("Fan Speed 3 - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the speed 3...");
+    Serial.println(F("Trying to set the speed 3..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -150,12 +150,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getSpeedFan() == fan_auto)
-        Serial.println("Fan Speed auto - change OK");
+        Serial.println(F("Fan Speed auto - change OK"));
     else
-        Serial.println("Fan Speed auto - change FAIL");
+        Serial.println(F("Fan Speed auto - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set the speed auto...");
+    Serial.println(F("Trying to set the speed auto..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -164,12 +164,12 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getSpeedFan() == false)
-        Serial.println("Set state false - 'turn off' - change OK");
+        Serial.println(F("Set state false - 'turn off' - change OK"));
     else
-        Serial.println("Set state false - 'turn off' - change FAIL");
+        Serial.println(F("Set state false - 'turn off' - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set state false (turn off)...");
+    Serial.println(F("Trying to set state false (turn off)..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -178,19 +178,19 @@ void setup(){
 
     // Retrieve mode
     if(remote_control.getSpeedFan() == true)
-        Serial.println("Set state true - 'turn on' - change OK");
+        Serial.println(F("Set state true - 'turn on' - change OK"));
     else
-        Serial.println("Set state true - 'turn on' - change FAIL");
+        Serial.println(F("Set state true - 'turn on' - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println("Trying to set state true (turn on)...");
+    Serial.println(F("Trying to set state true (turn on)..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
     // Change temperatures
-    Serial.println("Starting temperature tests...");
+    Serial.println(F("Starting temperature tests..."));
     for(i = 17; i < 31; i++){
-        Serial.print("Trying to set the temperature in ");
+        Serial.print(F("Trying to set the temperature in "));
         Serial.println(i);
 
         remote_control.setTemperature(i);
@@ -198,11 +198,11 @@ void setup(){
         delay(FIVE_SECONDS);
     }
 
-    Serial.println("Finishing tests...");
-    Serial.println("Turning off the Air Conditioner...");
+    Serial.println(F("Finishing tests..."));
+    Serial.println(F("Turning off the Air Conditioner..."));
 
     remote_control.turnOFF();
-    Serial.println("Finished all unit tests...");
+    Serial.println(F("Finished all unit tests..."));
 }
 
 void loop(){}
