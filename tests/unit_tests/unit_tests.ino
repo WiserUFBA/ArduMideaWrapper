@@ -34,6 +34,7 @@ void setup(){
     delay(FIVE_SECONDS);
 
     // Change mode
+    remote_control.setState(true);
     remote_control.setMode(mode_cool);
 
     // Retrieve mode
@@ -159,30 +160,30 @@ void setup(){
     remote_control.emit();
     delay(FIVE_SECONDS);
 
-    // Change speed fan
+    // Change state
     remote_control.setState(false);
 
-    // Retrieve mode
-    if(remote_control.getSpeedFan() == false)
+    // Retrieve state
+    if(remote_control.getState() == false)
         Serial.println(F("Set state false - 'turn off' - change OK"));
     else
         Serial.println(F("Set state false - 'turn off' - change FAIL"));
 
-    // Try to set this mode on the Air conditioner
+    // Try to set this state on the Air conditioner
     Serial.println(F("Trying to set state false (turn off)..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
-    // Change speed fan
+    // Change state
     remote_control.setState(true);
 
     // Retrieve mode
-    if(remote_control.getSpeedFan() == true)
+    if(remote_control.getState() == true)
         Serial.println(F("Set state true - 'turn on' - change OK"));
     else
         Serial.println(F("Set state true - 'turn on' - change FAIL"));
 
-    // Try to set this mode on the Air conditioner
+    // Try to set this state on the Air conditioner
     Serial.println(F("Trying to set state true (turn on)..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
