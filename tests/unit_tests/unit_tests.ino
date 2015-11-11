@@ -2,6 +2,7 @@
 #include <MideaIR.h>
 
 #define IR_EMITER       3
+#define TWO_SECONDS     2000
 #define FIVE_SECONDS    5000
 #define TEN_SECONDS     10000
 

@@ -41,7 +41,9 @@ void MideaIR::setMode(uint8_t new_mode){
     switch(new_mode){
         case mode_cool       :
         case mode_auto       :
+        #ifdef MIDEA_COOL_HEAT
         case mode_heat       :
+        #endif
         case mode_no_humidity:
             mode = new_mode; break;
         default:
