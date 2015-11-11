@@ -85,6 +85,8 @@ remote_control.getState();
 
 You can download the IR library here: ![Arduino-IRremote](https://github.com/z3t0/Arduino-IRremote)
 
+**P.S.:** Don't forget to use `setState(true)` before you emit commands like `setTemperature()`or `setMode()`, if you don't set the state to true the air conditioner won't turn on, or change the value. The default value to state is `false`.
+
 --
 <p align="center">
 	Developed by </br>
