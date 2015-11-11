@@ -12,13 +12,6 @@
 #include <stdint.h>
 #include <IRremote.h>
 
-/*
-    YOU CAN'T Change FAN SPEED on -MODE_AUTO and -MODE_NO_HUMIDITY  
-    YOU CAN'T Change TEMPERATURE on -VENTILATE MODE
-    YOU CAN'T Set    TURBO MODE on -VENTILATE MODE
-
-*/
-
 // Uncomment the following line to use old values for mode and fan speed
 // #define OLD_MIDEA
 
@@ -147,12 +140,12 @@ public:
     uint8_t getTemperature();
 
     /* Advanced Buttons */
-    void    doOscilate();
-    void    doChangeDirection();
+    void    doOscilate();           // ~ Not Working Properly
+    void    doChangeDirection();    // ~ Not Working Properly
 
     /* Complex Buttons */
     void    doCleanDevice();
-    void    setNoSound();
+    void    setNoSound();           // ~ Bug in disable
     void    seTurboMode();
     void    setIonizeMode();
 

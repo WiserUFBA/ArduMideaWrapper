@@ -230,6 +230,8 @@ void setup(){
     delay(TWO_SECONDS);
     remote_control.doChangeDirection();
     delay(TWO_SECONDS);
+    remote_control.doChangeDirection();
+    delay(TWO_SECONDS);
     // To finish this test put the air conditioner in the oscilate mode again
     remote_control.doOscilate();
 
@@ -238,21 +240,27 @@ void setup(){
     Serial.println(F("Testing sound response..."));
     remote_control.setNoSound();
     delay(TWO_SECONDS);
-    remote_control.setNoSound();
+    remote_control.setTemperature(20);
+    remote_control.emit();
     delay(TWO_SECONDS);
+    remote_control.setTemperature(22);
+    remote_control.emit();
+    delay(TWO_SECONDS);
+    remote_control.setNoSound();
+    delay(FIVE_SECONDS);
     Serial.println(F("Testing Turbo mode..."));
     remote_control.seTurboMode();
-    delay(TWO_SECONDS);
+    delay(FIVE_SECONDS);
     remote_control.seTurboMode();
     delay(TWO_SECONDS);
     Serial.println(F("Testing Ionize mode..."));
     remote_control.setIonizeMode();
-    delay(TWO_SECONDS);
+    delay(FIVE_SECONDS);
     remote_control.setIonizeMode();
     delay(TWO_SECONDS);
     Serial.println(F("Testing clean mode..."));
     remote_control.doCleanDevice();
-    delay(TWO_SECONDS);
+    delay(FIVE_SECONDS);
     remote_control.doCleanDevice();
     delay(TWO_SECONDS);
 

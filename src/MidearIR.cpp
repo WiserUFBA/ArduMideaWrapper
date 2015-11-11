@@ -232,12 +232,13 @@ void MideaIR::turnOFF(){
 }
 
 /* Advanced Buttons */
+// ~ Not Working Properly
 void MideaIR::doOscilate(){
     command_byte1 = OSCILATE_BYTE1;
     command_byte2 = ADVANCED_BYTE2;
     emit();
 }
-
+// ~ Not Working Properly
 void MideaIR::doChangeDirection(){
     command_byte1 = DIRECTION_BYTE1;
     command_byte2 = ADVANCED_BYTE2;
@@ -274,7 +275,7 @@ void MideaIR::doCleanDevice(){
     command_byte2 = CLEAN_DEVICE;
     complexEmit();
 }
-
+// ~ Not Working Properly
 void MideaIR::setNoSound(){
     // Change the value of the command_byte2 and then emit the code
     command_byte2 = NO_SOUND_MODE;
