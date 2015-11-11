@@ -12,6 +12,18 @@
 #include <stdint.h>
 #include <IRremote.h>
 
+/*
+    YOU CAN'T Change FAN SPEED on -MODE_AUTO and -MODE_NO_HUMIDITY  
+    YOU CAN'T Change TEMPERATURE on -VENTILATE MODE
+    YOU CAN'T Set    TURBO MODE on -VENTILATE MODE
+*/
+
+// Uncomment the following line to use old values for mode and fan speed
+// #define OLD_MIDEA
+// Comment the following line if you use the old values for mode and fan speed
+#define NEW_MIDEA
+
+#ifdef OLD_MIDEA
 // Air Conditioner Modes
 enum Modes{
     mode_cool        = 0x0,
@@ -19,6 +31,16 @@ enum Modes{
     mode_heat        = 0xC,
     mode_no_humidity = 0xD
 };
+#endif
+
+#ifdef NEW_MIDEA
+enum Modes{
+    mode_cool        = 0x0,
+    mode_auto        = 0x8,
+    mode_heat        = 0xC,
+    mode_no_humidity = 0x4
+};
+#endif
 
 // Air Conditioner Fan Speeds
 enum FanSpeed{
@@ -46,6 +68,10 @@ enum FanSpeed{
 // Bytes to turn off Midea Air Conditioner
 #define STOP_MIDEA_BYTE1    0x7B
 #define STOP_MIDEA_BYTE2    0xE0
+
+// Bytes to set ventilate Mode
+#define VENTILATE_BYTE1     0xBF
+#define VENTILATE_BYTE2     0xE4
 
 class MideaIR{
 private:
