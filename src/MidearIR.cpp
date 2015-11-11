@@ -127,9 +127,16 @@ void MideaIR::generateCommand(){
     }
 
     // Prepare Temperature
-    aux = temperature - 17; // Need to check if the numers 27 and 28 work with this
-    aux = (aux >> 1) ^ aux; // -> Convert decimal into grey code
-    b_temperature = aux;
+    /* I Can't see the logic in 27 and 28 temperatures */
+    if(temperature == 27)
+        b_temperature = 9;
+    else if(temperature == 28)
+        b_temperature = 8;
+    else{
+        aux = temperature - 17; // Need to check if the numers 27 and 28 work with this
+        aux = (aux >> 1) ^ aux; // -> Convert decimal into grey code
+        b_temperature = aux;
+    }
 
     // Prepare Mode and Fan Speed are alreay prepared so just copy the values to the temp var
     b_mode      = mode; 
@@ -224,3 +231,10 @@ void MideaIR::turnOFF(){
 void MideaIR::doOscilate(){} // <~ Not implemented yet
 
 void MideaIR::doChangeDirection(){} // Not implemented yet
+
+void MideaIR::doVentilate(){
+    command_byte1 = VENTILATE_BYTE1;
+    command_byte2 = VENTILATE_BYTE2;
+    emit();
+}
+}
