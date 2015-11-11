@@ -57,7 +57,9 @@ void MideaIR::setMode(uint8_t new_mode){
 
 void MideaIR::setSpeedFan(int new_speed_fan){
     switch(new_speed_fan){
-        case fan_off    : 
+        #ifdef OLD_MIDEA
+        case fan_off    :
+        #endif
         case fan_auto   :
         case fan_speed_1:
         case fan_speed_2:

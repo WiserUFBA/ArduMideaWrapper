@@ -49,6 +49,7 @@ void setup(){
     delay(FIVE_SECONDS);
 
     // Change mode
+    #ifdef MIDEA_COOL_HEAT
     remote_control.setMode(mode_heat);
 
     // Retrieve mode
@@ -61,6 +62,7 @@ void setup(){
     Serial.println(F("Trying to set the mode heat..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
+    #endif
 
     // Change mode
     remote_control.setMode(mode_no_humidity);
@@ -91,7 +93,9 @@ void setup(){
     delay(FIVE_SECONDS);
 
     // Change speed fan
+    #ifdef NEW_MIDEA
     remote_control.setSpeedFan(fan_off);
+
 
     // Retrieve mode
     if(remote_control.getSpeedFan() == fan_off)
@@ -103,6 +107,7 @@ void setup(){
     Serial.println(F("Trying to set the turn off Fan..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
+    #endif
 
     // Change speed fan
     remote_control.setSpeedFan(fan_speed_1);

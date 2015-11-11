@@ -20,8 +20,12 @@
 
 // Uncomment the following line to use old values for mode and fan speed
 // #define OLD_MIDEA
+
 // Comment the following line if you use the old values for mode and fan speed
 #define NEW_MIDEA
+
+// Enable heat mode on your fan
+//#define MIDEA_COOL_HEAT 
 
 #ifdef OLD_MIDEA
 // Air Conditioner Modes
