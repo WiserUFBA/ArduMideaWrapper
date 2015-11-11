@@ -32,6 +32,9 @@ MideaIR::MideaIR(IRsend *ref){
 
     // IR Emiter Reference
     irsend = ref;
+
+    // Set IR Configuration
+    irsend->enableIROut(MIDEA_FREQUENCY);
 }
 
 /* Class Based Functions */
@@ -200,9 +203,14 @@ void MideaIR::loWLevelEmit(){
 void MideaIR::emit(){
     // Prepare the command bytes
     generateCommand();
+    Serial.println("CHEGOU AQUI?");
 
-    // Set IR Configuration
-    irsend->enableIROut(MIDEA_FREQUENCY);
+    Serial.println("COMMAND BYTES");
+    Serial.print(command_byte1, BIN);
+    Serial.println();
+    Serial.print(command_byte2, BIN);
+    Serial.println();
+    Serial.println(" +++++ --- +++++ ");
 
     // Send two times the same command, we have not discovered why this is necessary :?
     loWLevelEmit();

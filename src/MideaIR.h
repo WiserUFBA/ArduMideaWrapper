@@ -64,8 +64,8 @@ private:
     IRsend  *irsend;
 
     /* Control Bytes */
-    uint8_t command_byte1;
-    uint8_t command_byte2;
+    volatile uint8_t command_byte1;
+    volatile uint8_t command_byte2;
 
     /* Low Level Operations */
     void    loWLevelEmit();
