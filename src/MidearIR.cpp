@@ -237,4 +237,3 @@ void MideaIR::doVentilate(){
     command_byte2 = VENTILATE_BYTE2;
     emit();
 }
-}

@@ -31,6 +31,14 @@ enum Modes{
     mode_heat        = 0xC,
     mode_no_humidity = 0xD
 };
+
+enum FanSpeed{
+    fan_off     = 0xE,
+    fan_auto    = 0xB,
+    fan_speed_1 = 0x9,
+    fan_speed_2 = 0x5,
+    fan_speed_3 = 0x3
+};
 #endif
 
 #ifdef NEW_MIDEA
@@ -40,16 +48,16 @@ enum Modes{
     mode_heat        = 0xC,
     mode_no_humidity = 0x4
 };
-#endif
 
-// Air Conditioner Fan Speeds
 enum FanSpeed{
-    fan_off     = 0xE,
     fan_auto    = 0xB,
     fan_speed_1 = 0x9,
     fan_speed_2 = 0x5,
     fan_speed_3 = 0x3
 };
+#endif
+
+// Air Conditioner Fan Speeds
 
 // Midea IR Times
 #define MIDEA_MARK_LIMIT    4200
