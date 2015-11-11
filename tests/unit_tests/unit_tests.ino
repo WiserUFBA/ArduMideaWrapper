@@ -3,6 +3,7 @@
 
 #define IR_EMITER       3
 #define FIVE_SECONDS    5000
+#define TEN_SECONDS     10000
 
 // IRsend Object and Remote Control object
 IRsend irsend;
@@ -35,16 +36,17 @@ void setup(){
 
     // Change mode
     remote_control.setState(true);
-    remote_control.setMode(mode_cool);
+
+    remote_control.setMode(mode_auto);
 
     // Retrieve mode
-    if(remote_control.getMode() == mode_cool)
-        Serial.println(F("Mode Cool - change OK"));
+    if(remote_control.getMode() == mode_auto)
+        Serial.println(F("Mode Auto - change OK"));
     else
-        Serial.println(F("Mode Cool - change FAIL"));
+        Serial.println(F("Mode Auto - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println(F("Trying to set the mode cool..."));
+    Serial.println(F("Trying to set the mode auto..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -79,16 +81,16 @@ void setup(){
     delay(FIVE_SECONDS);
 
     // Change mode
-    remote_control.setMode(mode_auto);
+    remote_control.setMode(mode_cool);
 
     // Retrieve mode
-    if(remote_control.getMode() == mode_auto)
-        Serial.println(F("Mode Auto - change OK"));
+    if(remote_control.getMode() == mode_cool)
+        Serial.println(F("Mode Cool - change OK"));
     else
-        Serial.println(F("Mode Auto - change FAIL"));
+        Serial.println(F("Mode Cool - change FAIL"));
 
     // Try to set this mode on the Air conditioner
-    Serial.println(F("Trying to set the mode auto..."));
+    Serial.println(F("Trying to set the mode cool..."));
     remote_control.emit();
     delay(FIVE_SECONDS);
 
@@ -203,6 +205,55 @@ void setup(){
         remote_control.emit();
         delay(FIVE_SECONDS);
     }
+
+    /* 
+        Advanced and Complex features don't have states so to start the feature
+        turn one time, to stop the feature turn it again
+    */
+
+    // Advanced Features
+    // One time to start oscilate
+    Serial.println(F("Testing advanced features..."));
+    Serial.println(F("Testing oscilation..."));
+    remote_control.doOscilate();
+    delay(TEN_SECONDS);
+    // And other time to stop oscilate
+    remote_control.doOscilate();
+    delay(TEN_SECONDS);
+    // The same in the command to change direction, one time to stop if is oscilating
+    // and the same command again to change direction
+    Serial.println(F("Testing direction chage..."));
+    remote_control.doChangeDirection();
+    delay(TWO_SECONDS);
+    remote_control.doChangeDirection();
+    delay(TWO_SECONDS);
+    remote_control.doChangeDirection();
+    delay(TWO_SECONDS);
+    // To finish this test put the air conditioner in the oscilate mode again
+    remote_control.doOscilate();
+
+    // Complex Features
+    Serial.println(F("Testing complex features..."));
+    Serial.println(F("Testing sound response..."));
+    remote_control.setNoSound();
+    delay(TWO_SECONDS);
+    remote_control.setNoSound();
+    delay(TWO_SECONDS);
+    Serial.println(F("Testing Turbo mode..."));
+    remote_control.seTurboMode();
+    delay(TWO_SECONDS);
+    remote_control.seTurboMode();
+    delay(TWO_SECONDS);
+    Serial.println(F("Testing Ionize mode..."));
+    remote_control.setIonizeMode();
+    delay(TWO_SECONDS);
+    remote_control.setIonizeMode();
+    delay(TWO_SECONDS);
+    Serial.println(F("Testing clean mode..."));
+    remote_control.doCleanDevice();
+    delay(TWO_SECONDS);
+    remote_control.doCleanDevice();
+    delay(TWO_SECONDS);
 
     Serial.println(F("Finishing tests..."));
     Serial.println(F("Turning off the Air Conditioner..."));

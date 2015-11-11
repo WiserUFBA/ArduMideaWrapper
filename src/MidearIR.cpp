@@ -21,10 +21,7 @@ MideaIR::MideaIR(IRsend *ref){
     speed_fan     = fan_auto;
     
     // Disable Complex Features
-    osci_dir      = false;
     sleep         = false;
-    turbo         = false;
-    sound         = false;
 
     // Zero the command bytes
     command_byte1 = 0;
@@ -32,9 +29,6 @@ MideaIR::MideaIR(IRsend *ref){
 
     // IR Emiter Reference
     irsend = ref;
-
-    // Set IR Configuration
-    irsend->enableIROut(MIDEA_FREQUENCY);
 }
 
 /* Class Based Functions */
@@ -138,14 +132,14 @@ void MideaIR::generateCommand(){
     else if(temperature == 28)
         b_temperature = 8;
     else{
-        aux = temperature - 17; // Need to check if the numers 27 and 28 work with this
+        aux = temperature - 17;
         aux = (aux >> 1) ^ aux; // -> Convert decimal into grey code
         b_temperature = aux;
     }
 
     // Prepare Mode and Fan Speed are alreay prepared so just copy the values to the temp var
     b_mode      = mode; 
-    b_fan_speed = speed_fan;
+    b_fan_speed = ((mode == mode_auto) || (mode == mode_no_humidity)) ? ESPECIAL_SPEED_FAN : speed_fan;
 
     // Prepare Features
     b_feature = 0xF; // <- Not implemented yet
@@ -154,7 +148,10 @@ void MideaIR::generateCommand(){
     command_byte1 = (b_fan_speed << 4)   | (b_feature);
 
     // Assembly Last Byte
-    command_byte2 = (b_temperature << 4) | (b_mode);
+    if(mode == mode_ventilate)
+        command_byte2 = VENTILATE_BYTE2;
+    else
+        command_byte2 = (b_temperature << 4) | (b_mode);
 }
 
 void MideaIR::emitByte(uint8_t byte_to_send){
@@ -212,14 +209,9 @@ void MideaIR::loWLevelEmit(){
 void MideaIR::emit(){
     // Prepare the command bytes
     generateCommand();
-    Serial.println("CHEGOU AQUI?");
 
-    Serial.println("COMMAND BYTES");
-    Serial.print(command_byte1, BIN);
-    Serial.println();
-    Serial.print(command_byte2, BIN);
-    Serial.println();
-    Serial.println(" +++++ --- +++++ ");
+    // Set IR Configuration
+    irsend->enableIROut(MIDEA_FREQUENCY);
 
     // Send two times the same command, we have not discovered why this is necessary :?
     loWLevelEmit();
@@ -237,13 +229,64 @@ void MideaIR::turnOFF(){
     emit();
 }
 
-/* Complex Buttons */
-void MideaIR::doOscilate(){} // <~ Not implemented yet
-
-void MideaIR::doChangeDirection(){} // Not implemented yet
-
-void MideaIR::doVentilate(){
-    command_byte1 = VENTILATE_BYTE1;
-    command_byte2 = VENTILATE_BYTE2;
+/* Advanced Buttons */
+void MideaIR::doOscilate(){
+    command_byte1 = OSCILATE_BYTE1;
+    command_byte2 = ADVANCED_BYTE2;
     emit();
+}
+
+void MideaIR::doChangeDirection(){
+    command_byte1 = DIRECTION_BYTE1;
+    command_byte2 = ADVANCED_BYTE2;
+    emit();
+}
+
+/* Complex Buttons */
+void MideaIR::lowLevelComplexEmit(){
+    // Start Communication
+    irsend->mark(MIDEA_MARK_LIMIT);
+    irsend->space(MIDEA_SPACE_LIMIT);
+    
+    // Emit Some bytes
+    emitByte(MIDEA_COMPLEX_BYTE1);
+    emitByte(MIDEA_COMPLEX_BYTE2);
+    emitByte(command_byte2);
+
+    // End Communication
+    irsend->mark(MIDEA_MARK_LIMIT2);
+    irsend->space(MIDEA_SPACE_LIMIT);
+}
+
+void MideaIR::complexEmit(){
+    // Set IR Configuration
+    irsend->enableIROut(MIDEA_FREQUENCY);
+
+    // Send two times the same command, we have not discovered why this is necessary :?
+    lowLevelComplexEmit();
+    lowLevelComplexEmit();
+}
+
+void MideaIR::doCleanDevice(){
+    // Change the value of the command_byte2 and then emit the code
+    command_byte2 = CLEAN_DEVICE;
+    complexEmit();
+}
+
+void MideaIR::setNoSound(){
+    // Change the value of the command_byte2 and then emit the code
+    command_byte2 = NO_SOUND_MODE;
+    complexEmit();
+}
+
+void MideaIR::seTurboMode(){
+    // Change the value of the command_byte2 and then emit the code
+    command_byte2 = TURBO_MODE;
+    complexEmit();
+}
+
+void MideaIR::setIonizeMode(){
+    // Change the value of the command_byte2 and then emit the code
+    command_byte2 = IONIZE_MODE;
+    complexEmit();
 }

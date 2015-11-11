@@ -16,6 +16,7 @@
     YOU CAN'T Change FAN SPEED on -MODE_AUTO and -MODE_NO_HUMIDITY  
     YOU CAN'T Change TEMPERATURE on -VENTILATE MODE
     YOU CAN'T Set    TURBO MODE on -VENTILATE MODE
+
 */
 
 // Uncomment the following line to use old values for mode and fan speed
@@ -48,9 +49,12 @@ enum FanSpeed{
 #ifdef NEW_MIDEA
 enum Modes{
     mode_cool        = 0x0,
+    mode_no_humidity = 0x4,
     mode_auto        = 0x8,
+    #ifdef MIDEA_COOL_HEAT
     mode_heat        = 0xC,
-    mode_no_humidity = 0x4
+    #endif
+    mode_ventilate   = 0xF
 };
 
 enum FanSpeed{
@@ -82,8 +86,23 @@ enum FanSpeed{
 #define STOP_MIDEA_BYTE2    0xE0
 
 // Bytes to set ventilate Mode
-#define VENTILATE_BYTE1     0xBF
 #define VENTILATE_BYTE2     0xE4
+
+// Especial Speed FAn 
+#define ESPECIAL_SPEED_FAN  0x1
+
+/* Advanced Functions */
+#define OSCILATE_BYTE1      0x6B
+#define DIRECTION_BYTE1     0xF
+#define ADVANCED_BYTE2      0xE0
+
+/* Complex Functions */
+#define MIDEA_COMPLEX_BYTE1 0xB5
+#define MIDEA_COMPLEX_BYTE2 0xF5
+#define TURBO_MODE          0xA2
+#define NO_SOUND_MODE       0xA5
+#define IONIZE_MODE         0xA9
+#define CLEAN_DEVICE        0xAA
 
 class MideaIR{
 private:
@@ -92,12 +111,8 @@ private:
     uint8_t temperature;
     uint8_t speed_fan;
     bool    state;
-    /* Complex Feature */
-    bool    osci_dir;
     /* Extra Functions */
     bool    sleep;
-    bool    turbo;
-    bool    sound;
     /* IR Emitter Object */
     IRsend  *irsend;
 
@@ -107,8 +122,10 @@ private:
 
     /* Low Level Operations */
     void    loWLevelEmit();
+    void    lowLevelComplexEmit();
     void    generateCommand();
     void    emitByte(uint8_t);
+    void    complexEmit();
 public:
     // Construct
     MideaIR(IRsend *);
@@ -129,10 +146,15 @@ public:
     uint8_t getSpeedFan();
     uint8_t getTemperature();
 
-    /* Complex Buttons */
+    /* Advanced Buttons */
     void    doOscilate();
     void    doChangeDirection();
-    void    doVentilate();
+
+    /* Complex Buttons */
+    void    doCleanDevice();
+    void    setNoSound();
+    void    seTurboMode();
+    void    setIonizeMode();
 
     // Emmit the command
     void    emit();
