@@ -120,6 +120,7 @@ public:
     /* Complex Buttons */
     void    doOscilate();
     void    doChangeDirection();
+    void    doVentilate();
 
     // Emmit the command
     void    emit();
