@@ -93,7 +93,7 @@ void setup(){
     delay(FIVE_SECONDS);
 
     // Change speed fan
-    #ifdef NEW_MIDEA
+    #ifdef OLD_MIDEA
     remote_control.setSpeedFan(fan_off);
 
 
