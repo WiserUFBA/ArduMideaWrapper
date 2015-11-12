@@ -234,15 +234,29 @@ void MideaIR::turnOFF(){
 /* Advanced Buttons */
 // ~ Not Working Properly
 void MideaIR::doOscilate(){
+    // Configure some bytes 
     command_byte1 = OSCILATE_BYTE1;
     command_byte2 = ADVANCED_BYTE2;
-    emit();
+   
+    // Set IR Configuration
+    irsend->enableIROut(MIDEA_FREQUENCY);
+
+    // Send two times the same command, we have not discovered why this is necessary :?
+    loWLevelEmit();
+    loWLevelEmit();
 }
 // ~ Not Working Properly
 void MideaIR::doChangeDirection(){
+    // Configure some bytes 
     command_byte1 = DIRECTION_BYTE1;
     command_byte2 = ADVANCED_BYTE2;
-    emit();
+    
+     // Set IR Configuration
+    irsend->enableIROut(MIDEA_FREQUENCY);
+
+    // Send two times the same command, we have not discovered why this is necessary :?
+    loWLevelEmit();
+    loWLevelEmit();
 }
 
 /* Complex Buttons */
