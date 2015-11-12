@@ -39,6 +39,7 @@ void MideaIR::setState(bool new_state){
 
 void MideaIR::setMode(uint8_t new_mode){
     switch(new_mode){
+        case mode_ventilate  :
         case mode_cool       :
         case mode_auto       :
         #ifdef MIDEA_COOL_HEAT
