@@ -138,8 +138,8 @@ public:
     uint8_t getTemperature();
 
     /* Advanced Buttons */
-    void    doOscilate();           // ~ Not Working Properly
-    void    doChangeDirection();    // ~ Not Working Properly
+    void    doOscilate();          
+    void    doChangeDirection();    
 
     /* Complex Buttons */
     void    doCleanDevice();
