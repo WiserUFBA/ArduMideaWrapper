@@ -233,7 +233,7 @@ void MideaIR::turnOFF(){
 }
 
 /* Advanced Buttons */
-// ~ Not Working Properly
+
 void MideaIR::doOscilate(){
     // Configure some bytes 
     command_byte1 = OSCILATE_BYTE1;
@@ -246,7 +246,7 @@ void MideaIR::doOscilate(){
     loWLevelEmit();
     loWLevelEmit();
 }
-// ~ Not Working Properly
+
 void MideaIR::doChangeDirection(){
     // Configure some bytes 
     command_byte1 = DIRECTION_BYTE1;
