@@ -37,9 +37,7 @@ enum FanSpeed{
     fan_speed_2 = 0x5,
     fan_speed_3 = 0x3
 };
-#endif
-
-#ifdef NEW_MIDEA
+#elif defined(NEW_MIDEA)
 enum Modes{
     mode_cool        = 0x0,
     mode_no_humidity = 0x4,
