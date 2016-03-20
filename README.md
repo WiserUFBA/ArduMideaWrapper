@@ -83,7 +83,7 @@ remote_control.getTemperature();
 remote_control.getState();
 ```
 
-You can download the IR library here: ![Arduino-IRremote](https://github.com/z3t0/Arduino-IRremote)
+You can download the IR library here: [Arduino-IRremote](https://github.com/z3t0/Arduino-IRremote)
 
 **P.S.:** Don't forget to use `setState(true)` before you emit commands like `setTemperature()`or `setMode()`, if you don't set the state to true the air conditioner won't turn on, or change the value. The default value to state is `false`.
 
@@ -105,9 +105,9 @@ Or, you can use a circuit with capacitor and a transistor NPN:
 
 ### Credits
 
-Thanks a lot Daniel Veillard (http://veillard.com) **![@veillard](https://github.com/veillard)** to point how to send the IR signals of Midea AC in the post (![http://veillard.com/embedded/midea.html](http://veillard.com/embedded/midea.html)), they help us a lot in the construction of this library, and thanks to **Tom Blough** (http://thebloughs.net/design-a-custom-ac-timer/) for help me (**![@jefersonla](https://github.com/jefersonla)**) and **![@veillard](https://github.com/veillard)** in the proccess of make reverse enginering. Thanks for the contributors of ![https://github.com/z3t0/Arduino-IRremote](https://github.com/z3t0/Arduino-IRremote) too.
+Thanks a lot Daniel Veillard (http://veillard.com) **[@veillard](https://github.com/veillard)** to point how to send the IR signals of Midea AC in the post ([http://veillard.com/embedded/midea.html](http://veillard.com/embedded/midea.html)), they help us a lot in the construction of this library, and thanks to **[Tom Blough](http://thebloughs.net/design-a-custom-ac-timer/)** for help me (**[@jefersonla](https://github.com/jefersonla)**) and **[@veillard](https://github.com/veillard)** in the proccess of make reverse enginering. Thanks for the contributors of [https://github.com/z3t0/Arduino-IRremote](https://github.com/z3t0/Arduino-IRremote) too.
 
-Developers **Jeferson Lima** (**![@jefersonla](https://github.com/jefersonla)**) and **Andressa Andrade** (**![@AndressAndrade](https://github.com/AndressAndrade)**)
+Developers **Jeferson Lima** (**[@jefersonla](https://github.com/jefersonla)**) and **Andressa Andrade** (**[@AndressAndrade](https://github.com/AndressAndrade)**)
 
 --
 <p align="center">
