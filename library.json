@@ -26,6 +26,17 @@
     {
       "name": "IRremote",
       "frameworks": "arduino",
-      "platforms": "atmelavr"
+      "platforms": "atmelavr",
+      "authors" :
+      [
+       {
+         "name":"Rafi Khan",
+         "email":"zetoslab@gmail.com"
+       },
+       {
+         "name":"Ken Shirriff",
+         "email":"ken.shirriff@gmail.com"
+       }
+      ]
     }
 }
