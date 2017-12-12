@@ -1,7 +1,7 @@
 {
   "name":"MideaIRWrapper",
   "description":"Wrapper for Midea AC, designed to be used with Arduino platform and IRRemote Library",
-  "keywords":"infrared,ir,remote,airconditioner,ac,arduino-ac,midea",
+  "keywords":"infrared,ir,remote,air conditioner,ac,arduino-ac,midea, airconditioner",
   "authors":
     [
       {
